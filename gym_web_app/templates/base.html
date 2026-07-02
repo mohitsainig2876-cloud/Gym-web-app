@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gym Admin</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <script>
+    if (localStorage.theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    }
+  </script>
+
+  <script>
+  tailwind.config = {
+    darkMode: 'class'
+  }
+</script>
+</head>
+
+<body class="bg-gray-100 text-black dark:bg-gray-900 dark:text-white">
+
+  <button onclick="toggleTheme()"
+  style="position: fixed; top: 20px; right: 20px; z-index: 999;"
+  class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white px-3 py-2 rounded">
+  🌙 / ☀️
+</button>
+
+<div class="flex">
+
+  <!-- SIDEBAR -->
+  <div class="w-64 h-screen bg-gray-900 text-white fixed">
+    <h1 class="text-2xl font-bold p-5 border-b border-gray-700">Gym Admin</h1>
+
+    <ul class="p-4 space-y-3">
+      <li><a href="/dashboard" class="flex gap-2 p-2 hover:bg-gray-700 rounded">
+        <i data-feather="home"></i> Dashboard</a></li>
+
+      <li><a href="/view_customers" class="flex gap-2 p-2 hover:bg-gray-700 rounded">
+        <i data-feather="users"></i> Customers</a></li>
+
+      <li><a href="/view_packages" class="flex gap-2 p-2 hover:bg-gray-700 rounded">
+        <i data-feather="box"></i> Packages</a></li>
+
+      <li><a href="/logout" class="flex gap-2 p-2 hover:bg-red-600 rounded">
+        <i data-feather="log-out"></i> Logout</a></li>
+
+        <a href="/memberships" class="block p-2 hover:bg-gray-200">
+  Memberships
+</a>
+
+      <li>
+        <a href="/add_payment" class="flex gap-2 p-2 hover:bg-gray-700 rounded">
+          💰 Payments
+        </a>
+
+        
+      </li>
+    </ul>
+  </div>
+
+  <!-- MAIN -->
+  <div class="ml-64 p-6 w-full">
+
+    <div class="flex justify-between mb-6">
+      <h1 class="text-2xl font-bold">Dashboard</h1>
+
+      <button onclick="toggleDark()" class="bg-gray-700 px-3 py-1 rounded">
+        🌙 Theme
+      </button>
+    </div>
+
+    {% block content %}{% endblock %}
+
+  </div>
+</div>
+
+<script>
+feather.replace();
+
+function toggleDark() {
+  if (document.documentElement.classList.contains('dark')) {
+    document.documentElement.classList.remove('dark');
+    localStorage.theme = 'light';
+  } else {
+    document.documentElement.classList.add('dark');
+    localStorage.theme = 'dark';
+  }
+}
+</script>
+
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+
+  if (html.classList.contains("dark")) {
+    html.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  } else {
+    html.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+// Load saved theme on refresh
+(function () {
+  const saved = localStorage.getItem("theme");
+
+  if (saved === "dark") {
+    document.documentElement.classList.add("dark");
+  }
+})();
+</script>
+
+</body>
+</html>

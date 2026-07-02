@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 class="text-2xl font-bold mb-6 text-black dark:text-white">
+  Add Customer
+</h1>
+
+<form method="POST" 
+      class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow w-96 text-black dark:text-white">
+
+  <!-- NAME -->
+  <label class="block mb-1">Name</label>
+  <input name="name" placeholder="Enter name"
+    class="w-full px-3 py-2 mb-3 rounded border
+    bg-gray-100 dark:bg-gray-700
+    text-black dark:text-white
+    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+  <!-- PHONE -->
+  <label class="block mb-1">Phone</label>
+  <input name="phone" placeholder="Enter phone"
+    class="w-full px-3 py-2 mb-3 rounded border
+    bg-gray-100 dark:bg-gray-700
+    text-black dark:text-white
+    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+  <!-- DATE -->
+  <label class="block mb-1">Joining Date</label>
+  <input name="date" placeholder="YYYY-MM-DD"
+    class="w-full px-3 py-2 mb-4 rounded border
+    bg-gray-100 dark:bg-gray-700
+    text-black dark:text-white
+    focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+  <!-- BUTTON -->
+  <button 
+    class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded w-full">
+    Add Customer
+  </button>
+
+</form>
+
+{% endblock %}
